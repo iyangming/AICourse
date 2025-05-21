@@ -11,11 +11,19 @@
 ### exam1
 - 基础Python编程练习
 - 数据可视化基础
+- 使用Matplotlib绘制图表
 
 ### exam2
 - Fashion MNIST数据集处理
 - 图像采样和增强技术
 - 使用TensorFlow加载数据集
+- CNN模型训练与评估
+
+### exam3
+- MNIST手写数字识别
+- 手写数字图像预处理
+- 数字图像格式转换(CSV)
+- 使用Keras构建神经网络模型
 
 ## 通用使用说明
 1. 每个实验项目包含:
