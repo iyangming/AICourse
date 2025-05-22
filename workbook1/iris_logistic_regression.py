@@ -59,8 +59,8 @@ def run_hyperparameter_experiment():
     df = load_data()
     visualize_data(df)
     
-    learning_rates = [0.001, 0.01, 0.1, 1.0, 10.0]
-    max_iters = [50, 100, 200, 500]
+    learning_rates = [0.01, 0.1, 1.0]
+    max_iters = [200, 500, 1000]
     
     results = []
     for lr in learning_rates:
@@ -101,6 +101,43 @@ def run_hyperparameter_experiment():
     print(f"最大迭代次数: {best_params['max_iter']}")
     print(f"测试集准确率: {best_params['test_acc']:.4f}")
     print(f"测试集损失: {best_params['test_loss']:.4f}")
+    
+    # 绘制决策边界
+    plt.figure(figsize=(10, 6))
+    
+    # 获取训练数据
+    binary_df = df[df['species'].isin(['setosa', 'virginica'])]
+    X = binary_df[['petal length (cm)', 'petal width (cm)']].values
+    y = binary_df['target'].values
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    
+    # 训练最佳模型
+    best_model = LogisticRegression(solver='saga', 
+                                  max_iter=int(best_params['max_iter']), 
+                                  C=1/best_params['learning_rate'])
+    best_model.fit(X_train_scaled, y_train)
+    
+    # 创建网格点
+    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
+    xx, yy = np.meshgrid(np.linspace(x_min, x_max, 100),
+                         np.linspace(y_min, y_max, 100))
+    
+    # 预测网格点
+    Z = best_model.predict_proba(scaler.transform(np.c_[xx.ravel(), yy.ravel()]))[:, 1]
+    Z = Z.reshape(xx.shape)
+    
+    # 绘制决策边界和散点图
+    plt.contourf(xx, yy, Z, alpha=0.4, cmap='RdBu_r')
+    plt.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap='RdBu_r', edgecolor='white')
+    plt.xlabel('Petal Length (cm)')
+    plt.ylabel('Petal Width (cm)')
+    plt.title('Decision Boundary of Logistic Regression')
+    plt.colorbar(label='Probability of Virginica')
+    plt.savefig('decision_boundary.png')
+    plt.close()
     
     return df_results
 
