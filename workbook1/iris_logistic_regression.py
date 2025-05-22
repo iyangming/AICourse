@@ -101,6 +101,11 @@ def run_hyperparameter_experiment():
     print(f"最大迭代次数: {best_params['max_iter']}")
     print(f"测试集准确率: {best_params['test_acc']:.4f}")
     print(f"测试集损失: {best_params['test_loss']:.4f}")
+    print(f"训练集损失: {best_params['train_loss']:.4f}")
+    print(f"训练时间: {best_params['training_time']:.4f}秒")
+    
+    # 保存所有结果到CSV文件
+    df_results.to_csv('hyperparameter_results.csv', index=False)
     
     # 绘制决策边界
     plt.figure(figsize=(10, 6))
