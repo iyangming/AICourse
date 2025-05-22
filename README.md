@@ -8,6 +8,7 @@
 - exam2/: 第二个实验项目(Fashion MNIST图像处理)
 - exam3/: 第三个实验项目(MNIST手写数字识别)
 - workbook1/: 逻辑回归实验项目
+- workbook2/: Softmax回归实验项目
 
 ## 实验项目概述
 ### exam1
@@ -41,6 +42,21 @@
   - 逻辑回归模型计算效率高(训练时间<0.002s)
   - 学习率在0.01-10.0范围内对性能影响不大
 
+### workbook2
+- Iris数据集Softmax回归多分类
+- 使用LogisticRegression实现Softmax回归
+- 特征选择: 花瓣长度和宽度
+- 默认参数: C=100, max_iter=1000
+- 测试准确率: 约97%
+- 主要功能:
+  - 训练模型并评估准确率
+  - 显示分类边界可视化
+  - 比较不同特征组合
+  - 评估训练集比例影响
+- 实验结论:
+  - 仅花瓣测量数据即可提供优秀的分类效果
+  - 模型对超参数变化相对稳定
+
 ## 通用使用说明
 1. 每个实验项目包含:
    - Python源代码(.py)
@@ -54,3 +70,4 @@
    - exam2: 运行fashion_mnist_processing.py或打开fashion_mnist_processing.ipynb
    - exam3: 运行mnist_image_process.py或打开mnist_image_process.ipynb
    - workbook1: 运行iris_logistic_regression.py或打开iris_logistic_regression.ipynb
+   - workbook2: 运行iris_softmax_classification.py或打开iris_softmax_classification.ipynb
