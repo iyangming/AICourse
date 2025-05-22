@@ -9,6 +9,9 @@
 - exam3/: 第三个实验项目(MNIST手写数字识别)
 - workbook1/: 逻辑回归实验项目
 - workbook2/: Softmax回归实验项目
+- workbook3/: 神经网络实验项目
+  - pytorch/: PyTorch实现
+  - tensorflow/: TensorFlow实现
 
 ## 实验项目概述
 ### exam1
@@ -37,10 +40,6 @@
 - 决策边界可视化
 - 学习率与损失函数关系分析
 - 迭代次数与准确率关系分析
-- 实验结论:
-  - 花瓣长度和宽度是区分两类鸢尾花的最佳特征
-  - 逻辑回归模型计算效率高(训练时间<0.002s)
-  - 学习率在0.01-10.0范围内对性能影响不大
 
 ### workbook2
 - Iris数据集Softmax回归多分类
@@ -48,26 +47,41 @@
 - 特征选择: 花瓣长度和宽度
 - 默认参数: C=100, max_iter=1000
 - 测试准确率: 约97%
-- 主要功能:
-  - 训练模型并评估准确率
-  - 显示分类边界可视化
-  - 比较不同特征组合
-  - 评估训练集比例影响
-- 实验结论:
-  - 仅花瓣测量数据即可提供优秀的分类效果
-  - 模型对超参数变化相对稳定
 
-## 通用使用说明
-1. 每个实验项目包含:
-   - Python源代码(.py)
-   - Jupyter Notebook(.ipynb)
-   - 结果图片
-   - README说明文件
-2. 推荐使用Anaconda环境
-3. 详细依赖请参考各项目README
-4. 运行方式:
-   - exam1: 直接运行e1.py或打开e1.ipynb
-   - exam2: 运行fashion_mnist_processing.py或打开fashion_mnist_processing.ipynb
-   - exam3: 运行mnist_image_process.py或打开mnist_image_process.ipynb
-   - workbook1: 运行iris_logistic_regression.py或打开iris_logistic_regression.ipynb
-   - workbook2: 运行iris_softmax_classification.py或打开iris_softmax_classification.ipynb
+### workbook3
+#### PyTorch实现
+- Iris数据集分类任务
+- 单层神经网络架构
+  - 输入层: 4个特征(花萼长度、花萼宽度、花瓣长度、花瓣宽度)
+  - 输出层: 3个类别(setosa, versicolor, virginica)
+  - 激活函数: Softmax
+- 训练过程:
+  - 数据预处理: 标准化特征值
+  - 损失函数: 交叉熵损失
+  - 优化器比较: SGD, Adam, RMSprop
+  - 超参数调优:
+    - 学习率: 0.001, 0.01, 0.1
+    - 训练轮次: 50, 100, 200
+- 可视化对比不同超参数组合下的模型表现
+
+#### TensorFlow实现
+- Iris数据集分类任务
+- 神经网络架构
+- 训练过程和超参数调优
+
+## 运行要求
+- Python 3.x
+- 相关依赖库:
+  - PyTorch (workbook3/pytorch)
+  - TensorFlow (workbook3/tensorflow)
+  - scikit-learn
+  - matplotlib
+  - pandas
+
+## 项目进展
+- [x] exam1: 基础练习
+- [x] exam2: 图像处理
+- [x] exam3: 手写数字识别
+- [x] workbook1: 逻辑回归
+- [x] workbook2: Softmax回归
+- [x] workbook3: 神经网络
