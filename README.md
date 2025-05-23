@@ -13,8 +13,8 @@
   - pytorch/: PyTorch实现
   - tensorflow/: TensorFlow实现
   - mindspore/: MindSpore实现
-- workbook4/: PyTorch基础知识学习
-- workbook4/: PyTorch基础知识学习
+- workbook4/: MindSpore基础知识学习
+- workbook5/: MindSpore进阶编程
 
 ## 实验项目概述
 ### exam1
@@ -83,6 +83,11 @@
 - 内容包括：Tensors, Datasets, Models, Transforms, Training, Saving/Loading Models
 - 使用 MNIST 数据集进行实践
 
+### workbook5
+- MindSpore进阶编程
+- 内容包括：数据集处理、模型构建、错误分析、混合精度训练
+- 使用 MindSpore 进行静态图编程实践
+
 ## 运行要求
 - Python 3.x
 - 相关依赖库:
@@ -101,3 +106,4 @@
 - [x] workbook2: Softmax回归
 - [x] workbook3: 神经网络
 - [ ] workbook4: MindSpore基础
+- [ ] workbook5: MindSpore进阶编程
