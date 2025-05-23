@@ -1,2 +1,6 @@
 *.zip
 *.ckpt
+*.mindrecord
+*.pb
+*.onnx
+*.mindrecord.db
