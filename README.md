@@ -14,6 +14,7 @@
   - tensorflow/: TensorFlow实现
   - mindspore/: MindSpore实现
 - workbook4/: PyTorch基础知识学习
+- workbook4/: PyTorch基础知识学习
 
 ## 实验项目概述
 ### exam1
@@ -75,6 +76,7 @@
 - Iris数据集分类任务
 - 使用MindSpore构建神经网络
 - 训练过程和性能评估
+
 
 ### workbook4
 - MindSpore 基础知识学习
