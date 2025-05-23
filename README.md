@@ -12,6 +12,7 @@
 - workbook3/: 神经网络实验项目
   - pytorch/: PyTorch实现
   - tensorflow/: TensorFlow实现
+  - mindspore/: MindSpore实现
 
 ## 实验项目概述
 ### exam1
@@ -69,11 +70,17 @@
 - 神经网络架构
 - 训练过程和超参数调优
 
+#### MindSpore实现
+- Iris数据集分类任务
+- 使用MindSpore构建神经网络
+- 训练过程和性能评估
+
 ## 运行要求
 - Python 3.x
 - 相关依赖库:
   - PyTorch (workbook3/pytorch)
   - TensorFlow (workbook3/tensorflow)
+  - MindSpore (workbook3/mindspore)
   - scikit-learn
   - matplotlib
   - pandas
