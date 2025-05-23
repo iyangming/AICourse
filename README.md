@@ -13,6 +13,7 @@
   - pytorch/: PyTorch实现
   - tensorflow/: TensorFlow实现
   - mindspore/: MindSpore实现
+- workbook4/: PyTorch基础知识学习
 
 ## 实验项目概述
 ### exam1
@@ -75,6 +76,11 @@
 - 使用MindSpore构建神经网络
 - 训练过程和性能评估
 
+### workbook4
+- MindSpore 基础知识学习
+- 内容包括：Tensors, Datasets, Models, Transforms, Training, Saving/Loading Models
+- 使用 MNIST 数据集进行实践
+
 ## 运行要求
 - Python 3.x
 - 相关依赖库:
@@ -92,3 +98,4 @@
 - [x] workbook1: 逻辑回归
 - [x] workbook2: Softmax回归
 - [x] workbook3: 神经网络
+- [ ] workbook4: MindSpore基础
