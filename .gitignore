@@ -1,2 +1,5 @@
 *.zip
 *.ckpt
+*.mindrecord
+*.mindrecord_db
+*.db
