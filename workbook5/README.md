@@ -23,3 +23,8 @@
 - [x] 模型构建
 - [ ] 错误分析
 - [ ] 混合精度训练
+
+
+## reference
+https://www.mindspore.cn/tutorials/zh-CN/r2.2/
+https://www.mindspore.cn/tutorials/experts/zh-CN/r2.2/index.html
