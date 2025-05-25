@@ -5,3 +5,6 @@
 *.onnx
 *.mindrecord.db
 *.bin
+*.de
+*.en
+*.fr

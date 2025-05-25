@@ -105,5 +105,8 @@
 - [x] workbook1: 逻辑回归
 - [x] workbook2: Softmax回归
 - [x] workbook3: 神经网络
-- [ ] workbook4: MindSpore基础
-- [ ] workbook5: MindSpore进阶编程
+- [x] workbook4: MindSpore基础
+- [x] workbook5: MindSpore进阶编程
+- [x] workbook6: 生成对抗网络(GAN)与自然语言处理(NLP)
+- [x] workbook7: MNIST手写数字识别
+- [x] workbook8: Cifar10图像分类
