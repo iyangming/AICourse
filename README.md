@@ -15,6 +15,63 @@
   - mindspore/: MindSpore实现
 - workbook4/: MindSpore基础知识学习
 - workbook5/: MindSpore进阶编程
+- d2l-mindspore/: 深度学习实践课程
+  - chapter_02_preliminaries/: 预备知识
+  - chapter_03_linear-networks/: 线性网络
+  - chapter_04_multilayer-perceptrons/: 多层感知机
+  - chapter_05_deep-learning-computation/: 深度学习计算
+  - chapter_06_convolutional-neural-networks/: 卷积神经网络
+  - chapter_07_convolutional-modern/: 现代卷积网络
+  - chapter_08_recurrent-neural-networks/: 循环神经网络
+  - chapter_09_recurrent-modern/: 现代循环网络
+  - chapter_10_attention_mechanisms/: 注意力机制
+  - chapter_11_optimization/: 优化算法
+  - chapter_12_computational-performance/: 计算性能
+  - chapter_13_computer-vision/: 计算机视觉
+  - chapter_14_natural_language_processing_pretraining/: 自然语言处理预训练
+  - chapter_15_natural_language_processing_applications/: 自然语言处理应用
+- d2l-paddle/: 深度学习实践课程
+  - chapter_attention-mechanisms/: 注意力机制
+  - chapter_computer-vision/: 计算机视觉
+  - chapter_convolutional-modern/: 现代卷积网络
+  - chapter_installation/: 安装指南
+  - chapter_introduction/: 介绍
+  - chapter_linear-networks/: 线性网络
+  - chapter_multilayer-perceptrons/: 多层感知机
+  - chapter_notation/: 符号说明
+  - chapter_optimization/: 优化算法
+  - chapter_preface/: 前言
+  - chapter_preliminaries/: 预备知识
+  - chapter_recurrent-modern/: 现代循环网络
+  - chapter_references/: 参考文献
+- d2l-tensorflow/: 深度学习实践课程
+  - chapter_attention-mechanisms/: 注意力机制
+  - chapter_computer-vision/: 计算机视觉
+  - chapter_convolutional-modern/: 现代卷积网络
+  - chapter_installation/: 安装指南
+  - chapter_introduction/: 介绍
+  - chapter_linear-networks/: 线性网络
+  - chapter_multilayer-perceptrons/: 多层感知机
+  - chapter_notation/: 符号说明
+  - chapter_optimization/: 优化算法
+  - chapter_preface/: 前言
+  - chapter_preliminaries/: 预备知识
+  - chapter_recurrent-modern/: 现代循环网络
+  - chapter_references/: 参考文献
+- d2l-pytorch/: 深度学习实践课程
+  - chapter_attention-mechanisms/: 注意力机制
+  - chapter_computer-vision/: 计算机视觉
+  - chapter_convolutional-modern/: 现代卷积网络
+  - chapter_installation/: 安装指南
+  - chapter_introduction/: 介绍
+  - chapter_linear-networks/: 线性网络
+  - chapter_multilayer-perceptrons/: 多层感知机
+  - chapter_notation/: 符号说明
+  - chapter_optimization/: 优化算法
+  - chapter_preface/: 前言
+  - chapter_preliminaries/: 预备知识
+  - chapter_recurrent-modern/: 现代循环网络
+  - chapter_references/: 参考文献
 
 ## 实验项目概述
 ### exam1
@@ -110,3 +167,8 @@
 - [x] workbook6: 生成对抗网络(GAN)与自然语言处理(NLP)
 - [x] workbook7: MNIST手写数字识别
 - [x] workbook8: Cifar10图像分类
+- [x] llm: 深度学习与Transformer模型
+- [x] d2l-mindspore: 深度学习实践课程
+- [x] d2l-paddle: 深度学习实践课程
+- [x] d2l-tensorflow: 深度学习实践课程
+- [x] d2l-pytorch: 深度学习实践课程
