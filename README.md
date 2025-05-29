@@ -1,9 +1,10 @@
-# AICourse 课程项目
+# AICourse
 
 ## 项目简介
 本课程项目包含多个实验项目，涵盖人工智能和机器学习的基础知识和实践应用。
 
 ## 目录结构
+- demo1/: 番茄钟计时器Web应用
 - exam1/: 第一个实验项目
 - exam2/: 第二个实验项目(Fashion MNIST图像处理)
 - exam3/: 第三个实验项目(MNIST手写数字识别)
@@ -15,6 +16,10 @@
   - mindspore/: MindSpore实现
 - workbook4/: MindSpore基础知识学习
 - workbook5/: MindSpore进阶编程
+- workbook6/: 生成对抗网络(GAN)与自然语言处理(NLP)
+- workbook7/: MNIST手写数字识别
+- workbook8/: Cifar10图像分类
+- llm/: 深度学习与Transformer模型
 - d2l-mindspore/: 深度学习实践课程
   - chapter_02_preliminaries/: 预备知识
   - chapter_03_linear-networks/: 线性网络
@@ -74,6 +79,26 @@
   - chapter_references/: 参考文献
 
 ## 实验项目概述
+### demo1
+- 番茄钟计时器Web应用
+- 功能特性:
+  - 可自定义工作时间、短休息和长休息时长
+  - 任务管理系统(添加、完成、删除任务)
+  - 统计功能(每日专注时间、每周番茄钟数量、任务完成数)
+  - 数据可视化图表(Chart.js)
+  - 主题切换(明暗模式)
+  - 音效通知
+  - 键盘快捷键支持
+  - PWA支持(Progressive Web App)
+  - 本地存储数据持久化
+- 技术栈: HTML5, CSS3, JavaScript, Chart.js
+- 文件结构:
+  - index.html: 主页面
+  - css/styles.css: 样式文件
+  - js/app.js: 核心逻辑
+  - assets/: 图标和音效资源
+  - manifest.json: PWA配置
+
 ### exam1
 - 基础Python编程练习
 - 数据可视化基础
@@ -134,7 +159,6 @@
 - 使用MindSpore构建神经网络
 - 训练过程和性能评估
 
-
 ### workbook4
 - MindSpore 基础知识学习
 - 内容包括：Tensors, Datasets, Models, Transforms, Training, Saving/Loading Models
@@ -154,8 +178,10 @@
   - scikit-learn
   - matplotlib
   - pandas
+- Web浏览器 (demo1)
 
 ## 项目进展
+- [x] demo1: 番茄钟计时器Web应用
 - [x] exam1: 基础练习
 - [x] exam2: 图像处理
 - [x] exam3: 手写数字识别
