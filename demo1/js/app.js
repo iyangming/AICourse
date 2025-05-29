@@ -1,6 +1,6 @@
 // Timer state
 let isRunning = false;
-let currentTime = 1500; // 25 minutes in seconds
+let currentTime = 1500; // This will be updated after settings load
 let interval = null;
 let currentMode = 'work';
 
@@ -81,7 +81,9 @@ let statistics = JSON.parse(localStorage.getItem('statistics')) || {
 
 function getWeekNumber(date) {
     const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
-    return Math.ceil((((date - firstDayOfYear) / 86400000) + firstDayOfYear.getDay() + 1) / 7);
+    const weekNumber = Math.ceil((((date - firstDayOfYear) / 86400000) + firstDayOfYear.getDay() + 1) / 7);
+    // Return as string with year prefix to ensure uniqueness across years
+    return `${date.getFullYear()}-W${weekNumber.toString().padStart(2, '0')}`;
 }
 
 function updateStatistics() {
@@ -110,16 +112,32 @@ function updateStatistics() {
     renderCharts();
 }
 
+// Add chart instances tracking
+let dailyChart = null;
+let weeklyChart = null;
+let tasksChart = null;
+
 function renderCharts() {
+    // Destroy existing charts before creating new ones
+    if (dailyChart) {
+        dailyChart.destroy();
+    }
+    if (weeklyChart) {
+        weeklyChart.destroy();
+    }
+    if (tasksChart) {
+        tasksChart.destroy();
+    }
+
     // Daily Chart
     const dailyCtx = document.getElementById('dailyChart').getContext('2d');
-    new Chart(dailyCtx, {
+    dailyChart = new Chart(dailyCtx, {
         type: 'bar',
         data: {
             labels: Object.keys(statistics.daily).slice(-7),
             datasets: [{
                 label: 'Focus Time (minutes)',
-                data: Object.values(statistics.daily).slice(-7).map(day => day.focusTime),
+                data: Object.values(statistics.daily).slice(-7).map(day => day?.focusTime || 0),
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
@@ -137,10 +155,16 @@ function renderCharts() {
 
     // Weekly Chart
     const weeklyCtx = document.getElementById('weeklyChart').getContext('2d');
-    new Chart(weeklyCtx, {
+    weeklyChart = new Chart(weeklyCtx, {
         type: 'line',
         data: {
-            labels: Object.keys(statistics.weekly).slice(-4),
+            labels: Object.keys(statistics.weekly).slice(-4).map(week => {
+                // Convert week key back to readable format
+                if (week.includes('-W')) {
+                    return week; // Already in new format
+                }
+                return `Week ${week}`; // Legacy format
+            }),
             datasets: [{
                 label: 'Weekly Pomodoros',
                 data: Object.values(statistics.weekly).slice(-4).map(week => week.pomodoros),
@@ -153,7 +177,37 @@ function renderCharts() {
             responsive: true,
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+
+    // Tasks Completed Chart
+    const tasksCtx = document.getElementById('tasksChart').getContext('2d');
+    tasksChart = new Chart(tasksCtx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(statistics.daily).slice(-7),
+            datasets: [{
+                label: 'Tasks Completed',
+                data: Object.values(statistics.daily).slice(-7).map(day => day.tasksCompleted),
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
                 }
             }
         }
@@ -175,6 +229,24 @@ function handleTimerComplete() {
         // Update statistics
         const today = new Date().toLocaleDateString();
         const currentWeek = getWeekNumber(new Date());
+        
+        // Initialize daily statistics if not exists
+        if (!statistics.daily[today]) {
+            statistics.daily[today] = {
+                focusTime: 0,
+                tasksCompleted: 0,
+                pomodoros: 0
+            };
+        }
+        
+        // Initialize weekly statistics if not exists
+        if (!statistics.weekly[currentWeek]) {
+            statistics.weekly[currentWeek] = {
+                focusTime: 0,
+                tasksCompleted: 0,
+                pomodoros: 0
+            };
+        }
         
         statistics.daily[today].focusTime += settings.workTime;
         statistics.daily[today].pomodoros += 1;
@@ -233,6 +305,42 @@ function renderTasks() {
     });
 }
 
+function deleteTask(taskId) {
+    tasks = tasks.filter(task => task.id !== taskId);
+    saveTasks();
+    renderTasks();
+    
+    // Update statistics
+    const today = new Date().toLocaleDateString();
+    const currentWeek = getWeekNumber(new Date());
+    
+    // Initialize statistics for today if not exists
+    if (!statistics.daily[today]) {
+        statistics.daily[today] = {
+            focusTime: 0,
+            tasksCompleted: 0,
+            pomodoros: 0
+        };
+    }
+    
+    // Initialize statistics for current week if not exists
+    if (!statistics.weekly[currentWeek]) {
+        statistics.weekly[currentWeek] = {
+            focusTime: 0,
+            tasksCompleted: 0,
+            pomodoros: 0
+        };
+    }
+    
+    // Update both daily and weekly statistics
+    statistics.daily[today].tasksCompleted += 1;
+    statistics.weekly[currentWeek].tasksCompleted += 1;
+    
+    // Save statistics and update display
+    localStorage.setItem('statistics', JSON.stringify(statistics));
+    renderCharts();
+}
+
 // Event listeners
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
@@ -270,6 +378,12 @@ function loadSettings() {
     if (savedSettings) {
         Object.assign(settings, JSON.parse(savedSettings));
         updateSettingsUI();
+    }
+    
+    // Update timer to reflect current settings
+    if (!isRunning) {
+        currentTime = settings.workTime * 60;
+        updateTimer();
     }
 }
 
@@ -330,6 +444,9 @@ document.getElementById('themeToggle').addEventListener('click', () => {
 
 // Initialize settings on load
 loadSettings();
+
+// Update timer display after settings are loaded
+resetTimer();
 
 
 // Keyboard Shortcuts
