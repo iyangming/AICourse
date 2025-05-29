@@ -262,3 +262,71 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+
+// Settings Management
+function loadSettings() {
+    const savedSettings = localStorage.getItem('pomodoroSettings');
+    if (savedSettings) {
+        Object.assign(settings, JSON.parse(savedSettings));
+        updateSettingsUI();
+    }
+}
+
+function saveSettings() {
+    localStorage.setItem('pomodoroSettings', JSON.stringify(settings));
+}
+
+function updateSettingsUI() {
+    document.getElementById('workTime').value = settings.workTime;
+    document.getElementById('shortBreak').value = settings.shortBreak;
+    document.getElementById('longBreak').value = settings.longBreak;
+    document.getElementById('volume').value = settings.volume;
+    
+    // Update theme
+    document.body.setAttribute('data-theme', settings.theme);
+}
+
+function handleSettingChange(event) {
+    const setting = event.target.id;
+    const value = event.target.value;
+    
+    // Validate input
+    switch(setting) {
+        case 'workTime':
+            settings.workTime = Math.min(Math.max(parseInt(value) || 25, 1), 60);
+            break;
+        case 'shortBreak':
+            settings.shortBreak = Math.min(Math.max(parseInt(value) || 5, 1), 30);
+            break;
+        case 'longBreak':
+            settings.longBreak = Math.min(Math.max(parseInt(value) || 15, 1), 60);
+            break;
+        case 'volume':
+            settings.volume = Math.min(Math.max(parseInt(value) || 50, 0), 100);
+            break;
+    }
+    
+    saveSettings();
+    
+    // Reset timer if it's not running
+    if (!isRunning) {
+        resetTimer();
+    }
+}
+
+// Add event listeners for settings
+document.getElementById('workTime').addEventListener('change', handleSettingChange);
+document.getElementById('shortBreak').addEventListener('change', handleSettingChange);
+document.getElementById('longBreak').addEventListener('change', handleSettingChange);
+document.getElementById('volume').addEventListener('change', handleSettingChange);
+
+// Theme switching
+document.getElementById('themeToggle').addEventListener('click', () => {
+    settings.theme = settings.theme === 'light' ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', settings.theme);
+    saveSettings();
+});
+
+// Initialize settings on load
+loadSettings();

@@ -1,4 +1,47 @@
 :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent-color: #4CAF50;
+    --error-color: #f44336;
+    --timer-ring: #4CAF50;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --accent-color: #66bb6a;
+    --error-color: #ef5350;
+    --timer-ring: #66bb6a;
+}
+
+/* Apply these variables to existing elements */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.timer-circle {
+    background-color: var(--bg-secondary);
+}
+
+.progress-ring-circle {
+    stroke: var(--timer-ring);
+}
+
+.control-btn {
+    background-color: var(--accent-color);
+    color: var(--bg-primary);
+}
+
+.task-container {
+    background-color: var(--bg-secondary);
+}
+
+:root {
     --primary-color: #ff6b6b;
     --secondary-color: #4ecdc4;
     --background-color: #f7f7f7;
