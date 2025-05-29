@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Pomodoro Timer</h1>
+            <div class="theme-switcher">
+                <button id="themeToggle">Change Theme</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="timer-container">
+                <div class="timer-circle">
+                    <svg class="progress-ring" width="300" height="300">
+                        <circle class="progress-ring-circle" stroke-width="10" fill="transparent" r="145" cx="150" cy="150"/>
+                    </svg>
+                    <div class="timer-display">
+                        <span id="minutes">25</span>:<span id="seconds">00</span>
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <button id="startBtn" class="control-btn">Start</button>
+                    <button id="pauseBtn" class="control-btn">Pause</button>
+                    <button id="resetBtn" class="control-btn">Reset</button>
+                </div>
+            </div>
+
+            <div class="task-container">
+                <h2>Tasks</h2>
+                <div class="task-input">
+                    <input type="text" id="taskInput" placeholder="Add a new task">
+                    <button id="addTaskBtn">Add Task</button>
+                </div>
+                <ul id="taskList" class="task-list"></ul>
+            </div>
+
+            <div class="settings-container">
+                <h2>Settings</h2>
+                <div class="time-settings">
+                    <div class="setting-item">
+                        <label for="workTime">Work Time (minutes):</label>
+                        <input type="number" id="workTime" value="25" min="1" max="60">
+                    </div>
+                    <div class="setting-item">
+                        <label for="shortBreak">Short Break (minutes):</label>
+                        <input type="number" id="shortBreak" value="5" min="1" max="30">
+                    </div>
+                    <div class="setting-item">
+                        <label for="longBreak">Long Break (minutes):</label>
+                        <input type="number" id="longBreak" value="15" min="1" max="60">
+                    </div>
+                </div>
+                <div class="sound-settings">
+                    <div class="setting-item">
+                        <label for="volume">Notification Volume:</label>
+                        <input type="range" id="volume" min="0" max="100" value="50">
+                    </div>
+                </div>
+            </div>
+
+            <div class="statistics-container">
+                <h2>Statistics</h2>
+                <div class="stats-display">
+                    <div class="chart-container">
+                        <canvas id="dailyChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+                    <div class="stats-summary">
+                        <div class="stat-item">
+                            <h3>Today's Focus Time</h3>
+                            <p id="todayFocus">0 minutes</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>Tasks Completed</h3>
+                            <p id="tasksCompleted">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js" type="module"></script>
+</body>
+</html>
