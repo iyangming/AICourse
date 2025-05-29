@@ -330,3 +330,76 @@ document.getElementById('themeToggle').addEventListener('click', () => {
 
 // Initialize settings on load
 loadSettings();
+
+
+// Keyboard Shortcuts
+const shortcuts = {
+    'Space': () => {
+        if (isRunning) {
+            pauseTimer();
+        } else {
+            startTimer();
+        }
+    },
+    'r': resetTimer,
+    'n': () => {
+        document.getElementById('taskInput').focus();
+    },
+    'Escape': () => {
+        document.getElementById('taskInput').blur();
+    },
+    't': () => {
+        document.getElementById('themeToggle').click();
+    },
+    '1': () => {
+        document.getElementById('workTime').focus();
+    },
+    '2': () => {
+        document.getElementById('shortBreak').focus();
+    },
+    '3': () => {
+        document.getElementById('longBreak').focus();
+    }
+};
+
+// Add keyboard event listener
+document.addEventListener('keydown', (event) => {
+    // Ignore shortcuts when typing in input fields
+    if (event.target.tagName === 'INPUT') {
+        return;
+    }
+    
+    const key = event.key;
+    if (shortcuts.hasOwnProperty(key)) {
+        event.preventDefault();
+        shortcuts[key]();
+    }
+});
+
+// Add shortcut hints to UI
+function addShortcutHints() {
+    // Start/Pause button
+    startBtn.setAttribute('title', 'Space: Start/Pause timer');
+    pauseBtn.setAttribute('title', 'Space: Start/Pause timer');
+    
+    // Reset button
+    resetBtn.setAttribute('title', 'R: Reset timer');
+    
+    // Task input
+    taskInput.setAttribute('title', 'N: Focus task input, Escape: Blur');
+    
+    // Theme toggle
+    document.getElementById('themeToggle')
+        .setAttribute('title', 'T: Toggle theme');
+    
+    // Time settings
+    document.getElementById('workTime')
+        .setAttribute('title', '1: Focus work time');
+    document.getElementById('shortBreak')
+        .setAttribute('title', '2: Focus short break');
+    document.getElementById('longBreak')
+        .setAttribute('title', '3: Focus long break');
+}
+
+// Initialize shortcut hints
+addShortcutHints();

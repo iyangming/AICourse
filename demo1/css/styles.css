@@ -239,3 +239,35 @@ header {
         font-size: 2.5rem;
     }
 }
+
+.keyboard-shortcuts {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+}
+
+.shortcuts-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+}
+
+.shortcuts-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+kbd {
+    background: var(--bg-primary);
+    border: 1px solid var(--text-secondary);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: var(--text-primary);
+    box-shadow: 0 2px 0 var(--text-secondary);
+}
