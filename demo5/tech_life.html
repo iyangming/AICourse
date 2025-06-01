@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技与生活</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        /* 导航栏样式 */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav li {
+            float: left;
+        }
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #111;
+        }
+        
+        /* 浮动布局 */
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .float-left {
+            float: left;
+            width: 60%;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .float-right {
+            float: right;
+            width: 30%;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        /* 文字样式 */
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        /* 图片样式 */
+        .tech-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .tech-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* 表单样式 */
+        .contact-form {
+            margin-top: 20px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+        
+        /* CSS3效果 - 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animated {
+            animation: fadeIn 1.5s;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">科技新闻</a></li>
+            <li><a href="#">智能生活</a></li>
+            <li><a href="#">关于我们</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container clearfix animated">
+        <div class="float-left">
+            <h1>科技与生活</h1>
+            <p>科技正在以前所未有的速度改变着我们的生活方式。从智能手机到智能家居，从人工智能到物联网，科技的发展让我们的生活变得更加便捷、高效和有趣。</p>
+            <p>在这个数字化时代，科技已经渗透到我们生活的方方面面。它不仅改变了我们的工作方式，也重塑了我们的社交方式、娱乐方式和消费方式。</p>
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="科技改变生活" class="tech-image">
+            <p>未来，随着5G、人工智能、虚拟现实等技术的发展，科技将继续深刻影响我们的生活，带来更多惊喜和可能性。</p>
+        </div>
+        
+        <div class="float-right">
+            <h2>联系我们</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <input type="text" placeholder="您的姓名" required>
+                    <input type="email" placeholder="您的邮箱" required>
+                    <textarea placeholder="您的留言" rows="5" required></textarea>
+                    <button type="submit">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript动态效果 - 表单提交提示
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的留言，我们会尽快回复您！');
+            this.reset();
+        });
+        
+        // jQuery动态效果 - 导航栏滚动效果
+        // 注意：实际使用时需要引入jQuery库
+        // $(window).scroll(function() {
+        //     if ($(this).scrollTop() > 100) {
+        //         $('nav').addClass('scrolled');
+        //     } else {
+        //         $('nav').removeClass('scrolled');
+        //     }
+        // });
+    </script>
+</body>
+</html>

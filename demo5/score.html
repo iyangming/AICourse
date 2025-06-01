@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生成绩统计</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>学生成绩统计系统</h1>
+    <button onclick="calculateScores()">开始统计</button>
+    <div id="result"></div>
+
+    <script>
+        function calculateScores() {
+            let scores = [];
+            for(let i = 0; i < 6; i++) {
+                let score = prompt(`请输入第${i+1}个学生的成绩:`);
+                scores.push(parseFloat(score));
+            }
+            
+            // 计算总分
+            let total = scores.reduce((sum, score) => sum + score, 0);
+            
+            // 计算平均分
+            let average = total / scores.length;
+            
+            // 显示结果
+            document.getElementById('result').innerHTML = 
+                `<table>
+                    <tr><th>总分</th><td>${total.toFixed(2)}</td></tr>
+                    <tr><th>平均分</th><td>${average.toFixed(2)}</td></tr>
+                </table>`;
+        }
+    </script>
+</body>
+</html>
