@@ -1,13 +1,18 @@
-# AICourse
+# AICourse - 人工智能课程项目
 
 ## 项目简介
 本课程项目包含多个实验项目，涵盖人工智能和机器学习的基础知识和实践应用。
 
 ## 目录结构
 - demo1/: 番茄钟计时器Web应用
+- demo2/: 多智能体AI金融分析师
+- demo3/: 第三个演示项目
+- demo4/: 第四个演示项目
+- demo5/: 第五个演示项目（网站设计项目）
 - exam1/: 第一个实验项目
 - exam2/: 第二个实验项目(Fashion MNIST图像处理)
 - exam3/: 第三个实验项目(MNIST手写数字识别)
+- exam4/: 第四个实验项目
 - workbook1/: 逻辑回归实验项目
 - workbook2/: Softmax回归实验项目
 - workbook3/: 神经网络实验项目
@@ -19,6 +24,8 @@
 - workbook6/: 生成对抗网络(GAN)与自然语言处理(NLP)
 - workbook7/: MNIST手写数字识别
 - workbook8/: Cifar10图像分类
+- workbook9/: 第九个工作簿项目
+- habit-tracker/: 习惯追踪应用
 - llm/: 深度学习与Transformer模型
 - d2l-mindspore/: 深度学习实践课程
   - chapter_02_preliminaries/: 预备知识
@@ -79,6 +86,7 @@
   - chapter_references/: 参考文献
 
 ## 实验项目概述
+
 ### demo1
 - 番茄钟计时器Web应用
 - 功能特性:
@@ -98,6 +106,46 @@
   - js/app.js: 核心逻辑
   - assets/: 图标和音效资源
   - manifest.json: PWA配置
+
+### demo2
+- 多智能体AI金融分析师
+- 功能特性:
+  - 使用CrewAI框架构建多智能体系统
+  - 集成SambaNova LLM进行智能分析
+  - 实时股票数据获取和分析
+  - 专业投资报告生成
+  - Streamlit Web界面
+- 技术栈: Python, Streamlit, CrewAI, SambaNova API, YFinance
+- 核心组件:
+  - financial_analyst.py: 主应用程序
+  - tools/financial_tools.py: 金融数据工具
+  - 股票分析智能体和报告撰写智能体
+
+### demo5
+- 网站设计项目
+- 功能特性:
+  - "国有技术"主题网站
+  - 响应式设计
+  - Bootstrap美化
+  - 表格展示和交互功能
+  - 学生成绩管理系统
+  - "科技与生活"主题页面
+- 技术栈: HTML5, CSS3, JavaScript, Bootstrap
+- 文件结构:
+  - index.html: 主页面
+  - about.html: 关于页面
+  - score.html: 成绩管理页面
+  - tech_life.html: 科技与生活页面
+  - styles.css: 样式文件
+  - README.md: 项目说明
+
+### habit-tracker
+- 习惯追踪应用
+- 功能特性:
+  - 习惯管理和追踪
+  - 进度可视化
+  - 数据持久化
+- 技术栈: 待补充
 
 ### exam1
 - 基础Python编程练习
@@ -169,22 +217,47 @@
 - 内容包括：数据集处理、模型构建、错误分析、混合精度训练
 - 使用 MindSpore 进行静态图编程实践
 
+### workbook6
+- 生成对抗网络(GAN)与自然语言处理(NLP)
+- 深度学习高级应用
+
+### workbook7
+- MNIST手写数字识别
+- 深度学习模型实现
+
+### workbook8
+- Cifar10图像分类
+- 计算机视觉应用
+
+### workbook9
+- 第九个工作簿项目
+- 待补充具体内容
+
 ## 运行要求
 - Python 3.x
 - 相关依赖库:
   - PyTorch (workbook3/pytorch)
   - TensorFlow (workbook3/tensorflow)
   - MindSpore (workbook3/mindspore)
+  - Streamlit (demo2)
+  - CrewAI (demo2)
   - scikit-learn
   - matplotlib
   - pandas
-- Web浏览器 (demo1)
+  - yfinance
+- Web浏览器 (demo1, demo5)
+- API密钥 (demo2需要SambaNova API密钥)
 
 ## 项目进展
 - [x] demo1: 番茄钟计时器Web应用
+- [x] demo2: 多智能体AI金融分析师
+- [ ] demo3: 第三个演示项目
+- [ ] demo4: 第四个演示项目
+- [x] demo5: 网站设计项目
 - [x] exam1: 基础练习
 - [x] exam2: 图像处理
 - [x] exam3: 手写数字识别
+- [ ] exam4: 第四个实验项目
 - [x] workbook1: 逻辑回归
 - [x] workbook2: Softmax回归
 - [x] workbook3: 神经网络
@@ -193,8 +266,17 @@
 - [x] workbook6: 生成对抗网络(GAN)与自然语言处理(NLP)
 - [x] workbook7: MNIST手写数字识别
 - [x] workbook8: Cifar10图像分类
+- [ ] workbook9: 第九个工作簿项目
+- [x] habit-tracker: 习惯追踪应用
 - [x] llm: 深度学习与Transformer模型
 - [x] d2l-mindspore: 深度学习实践课程
 - [x] d2l-paddle: 深度学习实践课程
 - [x] d2l-tensorflow: 深度学习实践课程
 - [x] d2l-pytorch: 深度学习实践课程
+
+## 最近更新
+- 添加了demo2多智能体AI金融分析师项目
+- 完善了demo5网站设计项目
+- 新增habit-tracker习惯追踪应用
+- 补充了各项目的技术栈和功能特性说明
+- 更新了项目进展状态
